@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Doctors — UWAY Health</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:Arial,sans-serif;background:#FAFAF8;color:#2C3E50;}
+.nav{background:#0F3D3D;display:flex;align-items:center;padding:14px 32px;gap:24px;}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-mark{width:34px;height:34px;border-radius:50%;background:#1a5555;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:#B8960C;font-family:Georgia,serif;}
+.nav-name{color:#fff;font-size:15px;font-family:Georgia,serif;}
+.nav-links{display:flex;gap:22px;margin-left:auto;align-items:center;}
+.nav-link{color:#a0bebe;font-size:12px;text-decoration:none;}
+.nav-cta{background:#B8960C;color:#1a0e00;font-size:11px;font-weight:700;padding:8px 18px;border-radius:4px;letter-spacing:.04em;text-decoration:none;}
+.hero{background:#0F3D3D;padding:44px 32px 40px;}
+.hero-eyebrow{display:flex;align-items:center;gap:8px;margin-bottom:16px;}
+.hero-line{width:28px;height:1px;background:#B8960C;}
+.hero-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#B8960C;}
+.hero-h1{font-family:Georgia,serif;font-size:32px;color:#fff;font-weight:400;line-height:1.25;margin-bottom:12px;}
+.hero-h1 em{color:#B8960C;font-style:italic;}
+.hero-sub{font-size:13px;color:#a0bebe;line-height:1.7;max-width:540px;margin-bottom:28px;}
+.hero-stats{display:flex;gap:0;border-top:1px solid rgba(184,150,12,.2);padding-top:20px;}
+.hero-stat{flex:1;padding-right:24px;border-right:1px solid rgba(184,150,12,.12);}
+.hero-stat:last-child{border-right:none;}
+.hero-stat-n{font-family:Georgia,serif;font-size:24px;color:#B8960C;}
+.hero-stat-l{font-size:10px;color:#708585;margin-top:3px;text-transform:uppercase;letter-spacing:.06em;}
+.filter-bar{background:#fff;border-bottom:0.5px solid #E0E0DC;padding:14px 32px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+.filter-label{font-size:11px;color:#888;text-transform:uppercase;letter-spacing:.06em;margin-right:4px;}
+.pill{font-size:11px;padding:5px 14px;border-radius:20px;border:0.5px solid #ccc;color:#555;background:#fff;cursor:pointer;}
+.pill.active{background:#0F3D3D;color:#B8960C;border-color:#0F3D3D;}
+.content{padding:32px;max-width:1100px;margin:0 auto;}
+.section-intro{margin-bottom:24px;}
+.section-intro h2{font-family:Georgia,serif;font-size:22px;color:#0F3D3D;font-weight:400;margin-bottom:6px;}
+.section-intro p{font-size:12px;color:#6B7280;line-height:1.6;}
+.featured-doc{background:#fff;border:0.5px solid #E0E0DC;border-radius:12px;overflow:hidden;margin-bottom:32px;}
+.featured-top{background:#0F3D3D;padding:24px 24px 20px;display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:start;}
+.featured-avatar{width:72px;height:72px;border-radius:50%;background:#1a5555;border:3px solid #B8960C;display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-size:22px;color:#B8960C;font-weight:700;flex-shrink:0;}
+.featured-badge{display:inline-block;font-size:9px;background:#B8960C;color:#1a0e00;padding:3px 10px;border-radius:3px;font-weight:700;letter-spacing:.06em;margin-bottom:8px;}
+.featured-name{font-family:Georgia,serif;font-size:22px;color:#fff;margin-bottom:4px;}
+.featured-role{font-size:11px;color:#B8960C;}
+.featured-deg{font-size:10px;color:#708585;margin-top:2px;}
+.featured-research{background:#162e2e;padding:10px 14px;border-radius:4px;margin-top:12px;}
+.featured-research-l{font-size:9px;color:#B8960C;text-transform:uppercase;letter-spacing:.08em;margin-bottom:3px;}
+.featured-research-t{font-size:11px;color:#a0bebe;}
+.feat-stat{text-align:right;}
+.feat-stat-n{font-family:Georgia,serif;font-size:20px;color:#B8960C;}
+.feat-stat-l{font-size:9px;color:#708585;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;}
+.featured-body{padding:20px 24px;}
+.featured-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;}
+.featured-tag{font-size:11px;padding:4px 10px;border-radius:3px;background:#E8F4F1;color:#085041;}
+.featured-tag.gold{background:#FBF6E3;color:#633806;}
+.featured-quote{border-left:3px solid #B8960C;padding:10px 14px;background:#FAFAF8;margin-bottom:16px;font-family:Georgia,serif;font-size:13px;color:#2C3E50;font-style:italic;line-height:1.6;}
+.featured-quote cite{font-family:Arial,sans-serif;font-size:10px;color:#888;margin-top:4px;display:block;font-style:normal;}
+.featured-cta{display:flex;gap:10px;}
+.feat-btn-p{background:#0F3D3D;color:#B8960C;font-size:12px;font-weight:700;padding:11px 22px;border-radius:4px;letter-spacing:.04em;text-decoration:none;display:inline-block;}
+.feat-btn-s{color:#0F3D3D;font-size:12px;padding:11px 22px;border-radius:4px;border:0.5px solid #0F3D3D;text-decoration:none;display:inline-block;}
+.doctors-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:32px;}
+.doc-card{background:#fff;border:0.5px solid #E0E0DC;border-radius:12px;overflow:hidden;}
+.doc-card-top{background:#0F3D3D;padding:20px 16px;display:flex;gap:12px;align-items:flex-start;}
+.doc-avatar{width:48px;height:48px;border-radius:50%;background:#1a5555;border:2px solid #B8960C;display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-size:15px;color:#B8960C;font-weight:700;flex-shrink:0;}
+.doc-name{font-family:Georgia,serif;font-size:14px;color:#fff;margin-bottom:3px;}
+.doc-yrs{font-size:10px;color:#B8960C;}
+.doc-deg{font-size:10px;color:#708585;margin-top:2px;}
+.doc-card-body{padding:14px 16px;}
+.doc-spec-label{font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:#888;margin-bottom:7px;}
+.doc-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px;}
+.doc-tag{font-size:10px;padding:3px 8px;border-radius:3px;background:#E8F4F1;color:#085041;}
+.doc-tag.gold{background:#FBF6E3;color:#633806;}
+.doc-divider{height:0.5px;background:#EEEDE8;margin-bottom:12px;}
+.doc-meta{display:flex;justify-content:space-between;margin-bottom:12px;}
+.doc-meta-n{font-family:Georgia,serif;font-size:14px;color:#0F3D3D;text-align:center;}
+.doc-meta-l{font-size:9px;color:#888;margin-top:2px;text-align:center;}
+.doc-cta{display:block;background:#0F3D3D;color:#B8960C;font-size:11px;font-weight:700;padding:9px;border-radius:4px;text-align:center;letter-spacing:.04em;text-decoration:none;}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a class="nav-logo" href="#"><div class="nav-mark">U</div><span class="nav-name">UWAY Health</span></a>
+  <div class="nav-links">
+    <a href="#" class="nav-link">Treatments</a>
+    <a href="#" class="nav-link">Our doctors</a>
+    <a href="#" class="nav-link">Clinics</a>
+    <a href="#" class="nav-cta">Book consultation</a>
+  </div>
+</nav>
+<section class="hero">
+  <div class="hero-eyebrow"><span class="hero-line"></span><span class="hero-label">Our medical team</span></div>
+  <h1 class="hero-h1">Every doctor here carries<br>decades of <em>real clinical outcomes</em></h1>
+  <p class="hero-sub">160+ specialists across Ayurveda, modern medicine, and yoga therapy. Each doctor is selected for clinical depth, not just credentials — every consultation backed by 25 years of protocol development.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="hero-stat-n">160+</div><div class="hero-stat-l">Specialist doctors</div></div>
+    <div class="hero-stat"><div class="hero-stat-n">70+</div><div class="hero-stat-l">Countries treated</div></div>
+    <div class="hero-stat"><div class="hero-stat-n">5L+</div><div class="hero-stat-l">Patients served</div></div>
+    <div class="hero-stat"><div class="hero-stat-n">AYUSH</div><div class="hero-stat-l">Govt research partner</div></div>
+  </div>
+</section>
+<div class="filter-bar">
+  <span class="filter-label">Filter by</span>
+  <span class="pill active">All specialists</span>
+  <span class="pill">Joints & spine</span>
+  <span class="pill">Women's health</span>
+  <span class="pill">Gut & digestion</span>
+  <span class="pill">Hormonal</span>
+  <span class="pill">Skin & hair</span>
+  <span class="pill">Respiratory</span>
+</div>
+<div class="content">
+  <div class="section-intro">
+    <h2>Senior consultants</h2>
+    <p>Doctors with 20+ years of clinical experience in complex and chronic conditions. Each has a defined specialty — not generalists.</p>
+  </div>
+  <div class="featured-doc">
+    <div class="featured-top">
+      <div class="featured-avatar">KN</div>
+      <div>
+        <span class="featured-badge">AYUSH RESEARCH CO-INVESTIGATOR</span>
+        <div class="featured-name">Dr. P.T. Keshavan Nambisan</div>
+        <div class="featured-role">Senior Consultant · 5th generation Kerala Vaidya · 24+ years</div>
+        <div class="featured-deg">BAMS — Rajiv Gandhi University of Health Sciences · Former Deputy CMO, AVP Coimbatore</div>
+        <div class="featured-research">
+          <div class="featured-research-l">Active government research</div>
+          <div class="featured-research-t">Co-PI — AYUSH funded study: Classical Ayurveda Management vs Methotrexate in Rheumatoid Arthritis (AMRA)</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div class="feat-stat"><div class="feat-stat-n">24+</div><div class="feat-stat-l">Yrs exp</div></div>
+        <div class="feat-stat"><div class="feat-stat-n">70+</div><div class="feat-stat-l">Countries</div></div>
+      </div>
+    </div>
+    <div class="featured-body">
+      <div class="featured-tags">
+        <span class="featured-tag gold">Autoimmune diseases</span>
+        <span class="featured-tag gold">Cancer supportive care</span>
+        <span class="featured-tag">Chronic kidney disease</span>
+        <span class="featured-tag">Autism spectrum</span>
+        <span class="featured-tag">Rheumatoid arthritis</span>
+        <span class="featured-tag">Progressive disorders</span>
+      </div>
+      <div class="featured-quote">"I was advised immediate surgery for two cervical disc prolapses. After consultation with Dr. Keshavan, Ayurveda oral medicines and lifestyle modifications resolved the condition — no surgery required."<cite>— Prof. N. Sambhava, patient</cite></div>
+      <div class="featured-cta">
+        <a href="doctor-keshavan.html" class="feat-btn-p">Book with Dr. Keshavan</a>
+        <a href="doctor-keshavan.html" class="feat-btn-s">View full profile</a>
+      </div>
+    </div>
+  </div>
+  <div class="doctors-grid">
+    <div class="doc-card">
+      <div class="doc-card-top">
+        <div class="doc-avatar">RK</div>
+        <div><div class="doc-name">Dr. Ranjani Karthik Pandit</div><div class="doc-yrs">20+ years · Sr. Consultant</div><div class="doc-deg">BAMS</div></div>
+      </div>
+      <div class="doc-card-body">
+        <div class="doc-spec-label">Specialisation</div>
+        <div class="doc-tags"><span class="doc-tag">Gastrointestinal</span><span class="doc-tag">Spine & joints</span><span class="doc-tag">Autoimmune</span></div>
+        <div class="doc-divider"></div>
+        <div class="doc-meta">
+          <div><div class="doc-meta-n">20+</div><div class="doc-meta-l">Yrs exp</div></div>
+          <div><div class="doc-meta-n">Online</div><div class="doc-meta-l">+ Clinic</div></div>
+          <div><div class="doc-meta-n">Hindi</div><div class="doc-meta-l">English</div></div>
+        </div>
+        <a href="#" class="doc-cta">Book consultation</a>
+      </div>
+    </div>
+    <div class="doc-card">
+      <div class="doc-card-top">
+        <div class="doc-avatar">KP</div>
+        <div><div class="doc-name">Dr. Karthik Pandit</div><div class="doc-yrs">20+ years · Sr. Consultant</div><div class="doc-deg">BAMS, MS (Psy), MTech — BITS Pilani</div></div>
+      </div>
+      <div class="doc-card-body">
+        <div class="doc-spec-label">Specialisation</div>
+        <div class="doc-tags"><span class="doc-tag">Psychosomatic</span><span class="doc-tag">Musculoskeletal</span><span class="doc-tag gold">Karnataka Govt Advisor</span></div>
+        <div class="doc-divider"></div>
+        <div class="doc-meta">
+          <div><div class="doc-meta-n">20+</div><div class="doc-meta-l">Yrs exp</div></div>
+          <div><div class="doc-meta-n">Online</div><div class="doc-meta-l">+ Clinic</div></div>
+          <div><div class="doc-meta-n">3</div><div class="doc-meta-l">Languages</div></div>
+        </div>
+        <a href="#" class="doc-cta">Book consultation</a>
+      </div>
+    </div>
+    <div class="doc-card">
+      <div class="doc-card-top">
+        <div class="doc-avatar">PR</div>
+        <div><div class="doc-name">Dr. Premalatha S</div><div class="doc-yrs">24+ years · Sr. Consultant</div><div class="doc-deg">BAMS</div></div>
+      </div>
+      <div class="doc-card-body">
+        <div class="doc-spec-label">Specialisation</div>
+        <div class="doc-tags"><span class="doc-tag">Gynaecology</span><span class="doc-tag">Pain management</span><span class="doc-tag">Obesity</span></div>
+        <div class="doc-divider"></div>
+        <div class="doc-meta">
+          <div><div class="doc-meta-n">24+</div><div class="doc-meta-l">Yrs exp</div></div>
+          <div><div class="doc-meta-n">Online</div><div class="doc-meta-l">+ Clinic</div></div>
+          <div><div class="doc-meta-n">2</div><div class="doc-meta-l">Languages</div></div>
+        </div>
+        <a href="#" class="doc-cta">Book consultation</a>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
